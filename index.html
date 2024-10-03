@@ -1,15 +1,31 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CORS and XXS Vulnerability Checker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Vulnerability Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>CORS and XXS Vulnerability Checker</h1>
-    <input type="text" id="targetSite" placeholder="Enter target site URL">
-    <button onclick="checkVulnerabilities()">Check Vulnerabilities</button>
-    <div id="result"></div>
-
-    <script src="app.js"></script>
+    <h1>CORS Vulnerability Checker</h1>
+    <p>Enter a target URL to check for CORS vulnerability:</p>
+    <input type="text" id="targetUrl" placeholder="https://example.com">
+    <button onclick="checkCORS()">Check CORS</button>
+    
+    <script src="script.js"></script>
 </body>
 </html>
