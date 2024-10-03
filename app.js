@@ -14,7 +14,7 @@ function checkVulnerabilities() {
         }
     };
     corsRequest.onerror = function() {
-        resultDiv.innerHTML += '<p>Target site is vulnerable to CORS.</p>';
+        resultDiv.innerHTML += '<p>Target site is not vulnerable to CORS.</p>';
     };
     corsRequest.send();
 
@@ -23,8 +23,8 @@ function checkVulnerabilities() {
         const img = document.createElement('img');
         img.src = targetSite + '?param=' + encodeURIComponent('<img src=x onerror=alert(document.domain)>');
         document.body.appendChild(img);
-        resultDiv.innerHTML += '<p>Target site is not vulnerable to XXS.</p>';
-    } catch (error) {
         resultDiv.innerHTML += '<p>Target site is vulnerable to XXS.</p>';
+    } catch (error) {
+        resultDiv.innerHTML += '<p>Target site is not vulnerable to XXS.</p>';
     }
 }
