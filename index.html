@@ -1,26 +1,15 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Exfiltration</title>
+    <title>CORS and XXS Vulnerability Checker</title>
 </head>
 <body>
-    <h1>Data Received</h1>
-    <div id="log"></div>
- <script>
-        // Parse URL parameters for exfiltrated data
-        const urlParams = new URLSearchParams(window.location.search);
-        const exfiltratedData = urlParams.get('data');
+    <h1>CORS and XXS Vulnerability Checker</h1>
+    <input type="text" id="targetSite" placeholder="Enter target site URL">
+    <button onclick="checkVulnerabilities()">Check Vulnerabilities</button>
+    <div id="result"></div>
 
-        // Log exfiltrated data
-        if (exfiltratedData) {
-            console.log("Exfiltrated Data: ", exfiltratedData);
-            document.getElementById('log').innerText = "Exfiltrated Data: " + exfiltratedData;
-        } else {
-            document.getElementById('log').innerText = "No data received.";
-        }
-    </script>
-
+    <script src="app.js"></script>
 </body>
 </html>
