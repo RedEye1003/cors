@@ -1,4 +1,4 @@
-function checkCORS() {
+function checkCORSpost() {
     var targetUrl = document.getElementById('targetUrl').value;
     
     // Create the CORS request using XMLHttpRequest
