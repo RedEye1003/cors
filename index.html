@@ -14,7 +14,28 @@
     document.getElementById('getRequestButton').addEventListener('click', function() {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', 'https://nxtgenapi.pokerbaazi.com/msc/user/profile?info_params=[%27personal_info%27,%27username_status%27]', true);
-      
+
       // Set the necessary headers
       xhr.setRequestHeader('Accept', 'application/json');
-      xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjkyODg2OGRjNDRlYTZhOThjODhiMzkzZDM2NDQ1MTM2NWViYjMwZDgiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmVkZXllMTAwMyIsImNzdF91aWQiOiI1MTQ0NjE4IiwiY3N0X3BhcnRuZXJfaWQiOjEwMDAxLCJjc3Rfc2YiOjQsImNzdF9hdXRoX3R5cGUiOiJsb2dpbiIsImNzdF9kX2lkIjoiYmU0OGMwNGRlNGFhMWZmYyIsImNzdF91bmFtZSI6IlJlZGV5ZTEwMDMiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9rZXJiYWF6aS0yOWY2YiIsImF1ZCI6InBva2VyYmFhemktMjlmNmIiLCJhdXRoX3
+      xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjkyODg2OGRjNDRlYTZhOThjODhiMzkzZDM2NDQ1MTM2NWViYjMwZDgiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmVkZXllMTAwMyIsImNzdF91aWQiOiI1MTQ0NjE4IiwiY3N0X3BhcnRuZXJfaWQiOjEwMDAxLCJjc3Rfc2YiOjQsImNzdF9hdXRoX3R5cGUiOiJsb2dpbiIsImNzdF9kX2lkIjoiYmU0OGMwNGRlNGFhMWZmYyIsImNzdF91bmFtZSI6IlJlZGV5ZTEwMDMiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9rZXJiYWF6aS0yOWY2YiIsImF1ZCI6InBva2VyYmFhemktMjlmNmIiLCJhdXRoX3RpbWUiOjE3MzI2MTMwMDIsInVzZXJfaWQiOiI1MTQ0NjE4Iiwic3ViIjoiNTE0NDYxOCIsImlhdCI6MTczMjYxMzAwMywiZXhwIjoxNzMyNjE2NjAzLCJwaG9uZV9udW1iZXIiOiIrOTE4MzAwMzI5MjAxIiwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJwaG9uZSI6WyIrOTE4MzAwMzI5MjAxIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiY3VzdG9tIn19.g16Ua1nNmY3lfMKYPNC9LyQaHCzC9GpOYApUZQLW7ESqRYhscDuitG9TXTNWoPauumOKEUqzOZ-XHJEN8WD4zZipxsW_zEdKvWBPgu5RVN8u9AxTgM2DkaFHo3uKb3Acl4HO-NQqRDUm9m3yRKAl-Ca81Cl2xYFvw31phL45pMRm-xh2rtYidlRgdmQ9NKOGYdetHmdAu2BxYKHHGRMJi0qgTLYNmEDoe2XhMKYlQb6sdTKXFh0Oj_ST3QrShG-HcXNfT7Xzu3BkXDydQSmFTh1rnHUA2lmP4HhIg_7h0qIavBa1OiB2zmotmDM3DOHlDqRNh8NO2jIAiJq7yJ2h-A');
+      xhr.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
+      xhr.setRequestHeader('User-Agent', 'okhttp/4.11.0');
+
+      // Track the request status
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          document.getElementById('responseText').textContent = 'Response: ' + xhr.responseText;
+        } else {
+          document.getElementById('responseText').textContent = 'Error: ' + xhr.status;
+        }
+      };
+
+      xhr.onerror = function() {
+        document.getElementById('responseText').textContent = 'Request failed.';
+      };
+
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
