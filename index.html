@@ -3,38 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GET Request Example</title>
+  <title>POST Request Example</title>
 </head>
 <body>
-  <h1>GET Request Example</h1>
-  <button id="getRequestButton">Send GET Request</button>
+  <h1>POST Request Example</h1>
+  <button id="postRequestButton">Send POST Request</button>
   <p id="responseText">No response yet.</p>
 
   <script>
-    document.getElementById('getRequestButton').addEventListener('click', function() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://nxtgenapi.pokerbaazi.com/msc/user/profile?info_params=[%27personal_info%27,%27username_status%27]', true);
-
-      // Set the necessary headers
-      xhr.setRequestHeader('Accept', 'application/json');
-      xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjkyODg2OGRjNDRlYTZhOThjODhiMzkzZDM2NDQ1MTM2NWViYjMwZDgiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmVkZXllMTAwMyIsImNzdF91aWQiOiI1MTQ0NjE4IiwiY3N0X3BhcnRuZXJfaWQiOjEwMDAxLCJjc3Rfc2YiOjQsImNzdF9hdXRoX3R5cGUiOiJsb2dpbiIsImNzdF9kX2lkIjoiYmU0OGMwNGRlNGFhMWZmYyIsImNzdF91bmFtZSI6IlJlZGV5ZTEwMDMiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9rZXJiYWF6aS0yOWY2YiIsImF1ZCI6InBva2VyYmFhemktMjlmNmIiLCJhdXRoX3RpbWUiOjE3MzI2MTMwMDIsInVzZXJfaWQiOiI1MTQ0NjE4Iiwic3ViIjoiNTE0NDYxOCIsImlhdCI6MTczMjYxMzAwMywiZXhwIjoxNzMyNjE2NjAzLCJwaG9uZV9udW1iZXIiOiIrOTE4MzAwMzI5MjAxIiwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJwaG9uZSI6WyIrOTE4MzAwMzI5MjAxIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiY3VzdG9tIn19.g16Ua1nNmY3lfMKYPNC9LyQaHCzC9GpOYApUZQLW7ESqRYhscDuitG9TXTNWoPauumOKEUqzOZ-XHJEN8WD4zZipxsW_zEdKvWBPgu5RVN8u9AxTgM2DkaFHo3uKb3Acl4HO-NQqRDUm9m3yRKAl-Ca81Cl2xYFvw31phL45pMRm-xh2rtYidlRgdmQ9NKOGYdetHmdAu2BxYKHHGRMJi0qgTLYNmEDoe2XhMKYlQb6sdTKXFh0Oj_ST3QrShG-HcXNfT7Xzu3BkXDydQSmFTh1rnHUA2lmP4HhIg_7h0qIavBa1OiB2zmotmDM3DOHlDqRNh8NO2jIAiJq7yJ2h-A');
-      xhr.setRequestHeader('Accept-Encoding', 'gzip, deflate, br');
-      xhr.setRequestHeader('User-Agent', 'okhttp/4.11.0');
-
-      // Track the request status
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          document.getElementById('responseText').textContent = 'Response: ' + xhr.responseText;
-        } else {
-          document.getElementById('responseText').textContent = 'Error: ' + xhr.status;
-        }
-      };
-
-      xhr.onerror = function() {
-        document.getElementById('responseText').textContent = 'Request failed.';
-      };
-
-      xhr.send();
+    document.getElementById('postRequestButton').addEventListener('click', function () {
+      fetch('https://api-iam.intercom.io/messenger/web/ping', {
+        method: 'POST',
+        headers: {
+          'Sec-Ch-Ua': '"Chromium";v="119", "Not?A_Brand";v="24"',
+          'Sec-Ch-Ua-Platform': '"Windows"',
+          'Sec-Ch-Ua-Mobile': '?0',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.199 Safari/537.36',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': '*/*',
+          'Origin': 'https://www.civo.com',
+          'Sec-Fetch-Site': 'cross-site',
+          'Sec-Fetch-Mode': 'cors',
+          'Sec-Fetch-Dest': 'empty',
+          'Accept-Encoding': 'gzip, deflate, br',
+          'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
+          'Priority': 'u=1, i'
+        },
+        body: 'app_id=kk9rzapt&v=3&g=058f36d5e2aa1f9845042e06630e72013d4187ae&s=8b812a2d-7310-48fa-8e3e-71346b4235d8&r=https%3A%2F%2Fdashboard.civo.com%2F&platform=web&installation_type=gtm&Idempotency-Key=f9705e519a9c8b43&internal=%7B%7D&is_intersection_booted=false&page_title=Civo%20-%20Cloud%20Computing%20Services%20Reimagined%20-%20Civo.com&user_active_company_id=undefined&user_data=%7B%22email%22%3A%22pentester.redeye%40gmail.com%22%2C%22user_id%22%3A%22d81d51f6-c0d2-4b43-9399-933bdd87bdd9%22%2C%22user_hash%22%3A%22f50f63c64fbf5614f25067d5e1517d02d37bd8fedc1fb2773a14f65791e75e05%22%2C%22anonymous_id%22%3A%2286f44859-625c-4c27-aadc-26322f528999%22%2C%22name%22%3A%22pentest%20redeye%22%2C%22phone%22%3A%22%22%2C%22signup_score%22%3A%220%22%2C%22referred%22%3A%22NO%22%2C%22star_rating%22%3A%22%22%2C%22created_at%22%3A1732771956%2C%22signed_up_at%22%3A1732771956%2C%22total_complete_referrals%22%3A0%2C%22instances_current_count%22%3A0%2C%22instances_current_ram_mb%22%3A0%2C%22instances_current_cpu%22%3A0%2C%22instances_lifetime_count%22%3A0%2C%22block_storage_current_count%22%3A0%2C%22block_storage_current_size_gb%22%3A0%2C%22networks_count%22%3A1%2C%22club_100_member%22%3A%22NO%22%7D&source=apiBoot&sampling=false&referer=https%3A%2F%2Fwww.civo.com%2F&anonymous_session=YU9rVXFsYlFUd0JUWlJGVFJ5NERtWTlCWUxmRGJkWjhIYksvamFNdEdSa081cVEzSWZzWEVNanVtYVNBWG5oVS0tWGRrMStqUDUrZ2F0MXJ5bGhscnE1UT09--7db3cfcd1789734607893d4c6e9d9b5bf5e53a17&device_identifier=894a0f17-8aaf-4f10-a8cd-8e7f9cb62bca'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.text();
+        })
+        .then(data => {
+          console.log('Success:', data);
+          document.getElementById('responseText').textContent = 'Response: ' + data;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('responseText').textContent = 'Error: ' + error.message;
+        });
     });
   </script>
 </body>
