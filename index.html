@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GET Request with CORS Proxy</title>
+  <title>GET Request Example</title>
 </head>
 <body>
-  <h1>GET Request Example (With CORS Proxy)</h1>
+  <h1>GET Request Example</h1>
   <button id="getRequestButton">Send GET Request</button>
   <pre id="responseText">No response yet.</pre>
 
   <script>
     document.getElementById('getRequestButton').addEventListener('click', function () {
-      const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-      const targetUrl = 'https://api.topcoder.com/v3/members/redeye10';
+      const apiUrl = 'https://api.topcoder.com/v3/members/redeye10';
 
-      fetch(proxyUrl + targetUrl, {
+      fetch(apiUrl, {
         method: 'GET',
         headers: {
           'Accept': '*/*',
-          'Origin': 'https://redeye1003.github.io',
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.6045.199 Safari/537.36',
           'Sec-Fetch-Mode': 'cors',
           'Sec-Fetch-Site': 'same-site',
           'Sec-Fetch-Dest': 'empty',
-          'Referer': 'https://profiles.topcoder.com/',
-          'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8'
+          'Referer': 'https://redeye1003.github.io'
         }
       })
         .then(response => {
